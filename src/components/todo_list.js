@@ -16,7 +16,7 @@ export default class TodoLis extends Component {
       <ul className="todo-list">
         {this.state.todos.map(todo => (
           <TodoItem
-            id={todo.id}
+            key={todo.id}
             title={todo.title}
             completed={todo.completed}
           />

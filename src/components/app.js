@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Header from './header';
-import TodoList from './todo_list';
-
-// import './index.css';
+import Header from "./header";
+import TodoList from "./todo_list";
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <section className="todoapp">
         <Header />
         <TodoList />
-      </div>
-    )
+      </section>
+    );
   }
 }
