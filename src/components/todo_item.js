@@ -14,8 +14,7 @@ export default function TodoItem({
           className="toggle"
           type="checkbox"
           checked={completed}
-          readOnly
-          onClick={() => completeTodo(id)}
+          onChange={() => completeTodo(id)}
         />
         <label>{title}</label>
         <button className="destroy" onClick={() => removeTodo(id)} />
