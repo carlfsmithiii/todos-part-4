@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { Component } from "react";
 
-export default function Header() {
-  return (
-    <header className="header">
-      <h1>todos</h1>
-      <input className="new-todo" placeholder="What needs to be done?" autoFocus />
-    </header>
-  );
+export default class Header extends Component {
+  state = { new_todo: "" };
+
+  onFormChange = event => {
+    const newValue = event.target.value;
+
+    this.setState(() => {
+      return { new_todo: newValue };
+    });
+  };
+
+  onFormSubmit = event => {
+    event.preventDefault();
+    // this.props.onFormSubmit(this.state.new_todo);
+
+    if (this.state.new_todo.length > 0) {
+      this.setState(() => {
+        return { new_todo: "" };
+      });
+    }
+  };
+
+  render() {
+    return (
+      <header className="header">
+        <h1>todos</h1>
+        <form onSubmit={this.onFormSubmit}>
+          <input
+            className="new-todo"
+            placeholder="what do you need to do?"
+            onChange={this.onFormChange}
+            name="new-todo"
+            autoFocus
+          />
+        </form>
+      </header>
+    );
+  }
 }
