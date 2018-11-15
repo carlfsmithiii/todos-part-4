@@ -13,9 +13,10 @@ export default class Header extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    // this.props.onFormSubmit(this.state.new_todo);
 
     if (this.state.new_todo.length > 0) {
+      this.props.addTodo(this.state.new_todo);
+
       this.setState(() => {
         return { new_todo: "" };
       });
