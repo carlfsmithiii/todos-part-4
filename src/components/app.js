@@ -52,6 +52,27 @@ export default class App extends Component {
     });
   };
 
+  handleClearCompletedTodos = () => {
+    this.setState(prevState => {
+      const todos = Object.values(prevState.todos).reduce((accumulator, todo) => {
+        if (!todo.completed) {
+          accumulator[todo.id] = todo;
+        }
+        return accumulator;
+      }, {});
+
+      return { todos };
+
+    });
+  };
+
+  getCompletedTodosCount = () => {
+    return Object.values(this.state.todos).reduce(
+      (accumulator, todo) => (todo.completed ? ++accumulator : accumulator),
+      0
+    );
+  };
+
   render() {
     return (
       <section className="todoapp">
@@ -61,7 +82,11 @@ export default class App extends Component {
           handleCompleteTodoClick={this.handleCompleteTodoClick}
           handleRemoveTodoClick={this.handleRemoveTodoClick}
         />
-        <Footer todo_count={Object.keys(this.state.todos).length} />
+        <Footer
+          todo_count={Object.keys(this.state.todos).length}
+          completed_count={this.getCompletedTodosCount()}
+          clearCompleted={this.handleClearCompletedTodos}
+        />
       </section>
     );
   }

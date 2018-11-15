@@ -6,7 +6,7 @@ export default function Footer(props) {
       <span className="todo-count">
         <strong>{props.todo_count}</strong> item(s) left
       </span>
-      {props.todo_count > 0 && <button className="clear-completed">Clear completed</button>}
+      {props.completed_count > 0 && <button className="clear-completed" onClick={props.clearCompleted}>Clear completed</button>}
     </footer>
   );
 }
