@@ -34,11 +34,20 @@ export default class App extends Component {
     });
   };
 
-  handleTodoClick = todoId => {
+  handleCompleteTodoClick = todoId => {
     this.setState(prevState => {
       const todos = { ...prevState.todos };
-
       todos[todoId].completed = !todos[todoId].completed;
+
+      return { todos };
+    });
+  };
+
+  handleRemoveTodoClick = todoId => {
+    this.setState(prevState => {
+      const todos = { ...prevState.todos };
+      delete todos[todoId];
+
       return { todos };
     });
   };
@@ -49,7 +58,8 @@ export default class App extends Component {
         <Header addTodo={this.handleAddTodo} />
         <TodoList
           todos={Object.values(this.state.todos)}
-          handleTodoClick={this.handleTodoClick}
+          handleCompleteTodoClick={this.handleCompleteTodoClick}
+          handleRemoveTodoClick={this.handleRemoveTodoClick}
         />
         <Footer todo_count={1} />
       </section>
