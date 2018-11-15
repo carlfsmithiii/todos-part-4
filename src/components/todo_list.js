@@ -9,6 +9,8 @@ export default function TodoList(props) {
           key={todo.id}
           title={todo.title}
           completed={todo.completed}
+          id={todo.id}
+          finishTodo={props.handleTodoClick}
         />
       ))}
     </ul>
