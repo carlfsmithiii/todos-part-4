@@ -1,28 +1,16 @@
-import React, { Component } from "react";
-import TodoItem from "./todo_item";
-import todos from "../todos.json";
+import React from 'react'
+import TodoItem from './todo_item';
 
-export default class TodoLis extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      todos
-    };
-  }
-
-  render() {
-    return (
-      <ul className="todo-list">
-        {this.state.todos.map(todo => (
-          <TodoItem
-            key={todo.id}
-            title={todo.title}
-            completed={todo.completed}
-          />
-        ))}
-        ;
-      </ul>
-    );
-  }
+export default function TodoList(props) {
+  return (
+    <ul className="todo-list">
+      {props.todos && props.todos.map(todo => (
+        <TodoItem
+          key={todo.id}
+          title={todo.title}
+          completed={todo.completed}
+        />
+      ))}
+    </ul>
+  )
 }
