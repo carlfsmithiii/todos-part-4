@@ -61,7 +61,7 @@ export default class App extends Component {
           handleCompleteTodoClick={this.handleCompleteTodoClick}
           handleRemoveTodoClick={this.handleRemoveTodoClick}
         />
-        <Footer todo_count={1} />
+        <Footer todo_count={Object.keys(this.state.todos).length} />
       </section>
     );
   }
