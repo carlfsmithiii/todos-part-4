@@ -7,11 +7,16 @@ import Footer from "./footer";
 import Todos from "../todos.json";
 
 export default class App extends Component {
-  state = { todos: Todos };
+  state = {
+    todos: Todos.reduce((accumulator, todo) => {
+      accumulator[todo.id] = todo;
+      return accumulator;
+    }, {})
+  };
 
   addTodo = newTodoText => {
     const newTodoId =
-      this.state.todos.reduce((accumulator, todo) =>
+      Object.values(this.state.todos).reduce((accumulator, todo) =>
         accumulator.id > todo.id ? accumulator : todo
       ).id + 1;
 
@@ -19,21 +24,23 @@ export default class App extends Component {
       userId: 1,
       id: newTodoId,
       title: newTodoText,
-      "completed": false 
+      completed: false
     };
 
     this.setState(prevState => {
       return {
-        todos: prevState.todos.concat(newTodo)
+        todos: Object.assign(prevState.todos, { [newTodoId]: newTodo })
       };
     });
   };
+
+  // finishTodo = todoId => {};
 
   render() {
     return (
       <section className="todoapp">
         <Header addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={Object.values(this.state.todos)} />
         <Footer todo_count={1} />
       </section>
     );
