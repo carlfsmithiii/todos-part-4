@@ -34,7 +34,7 @@ export default class App extends Component {
     });
   };
 
-  handleCompleteTodoClick = todoId => {
+  handleCompleteTodoClick = todoId => event => {
     this.setState(prevState => {
       const todos = { ...prevState.todos };
       todos[todoId].completed = !todos[todoId].completed;
@@ -43,7 +43,7 @@ export default class App extends Component {
     });
   };
 
-  handleRemoveTodoClick = todoId => {
+  handleRemoveTodoClick = todoId => event => {
     this.setState(prevState => {
       const todos = { ...prevState.todos };
       delete todos[todoId];

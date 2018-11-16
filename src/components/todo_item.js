@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function TodoItem({
-  id,
   completed,
   title,
   completeTodo,
@@ -14,10 +13,10 @@ export default function TodoItem({
           className="toggle"
           type="checkbox"
           checked={completed}
-          onChange={() => completeTodo(id)}
+          onChange={() => completeTodo()}
         />
         <label>{title}</label>
-        <button className="destroy" onClick={() => removeTodo(id)} />
+        <button className="destroy" onClick={() => removeTodo()} />
       </div>
     </li>
   );
