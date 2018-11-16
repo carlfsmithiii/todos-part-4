@@ -34,6 +34,7 @@ export default class Header extends Component {
             onChange={this.onFormChange}
             name="new-todo"
             autoFocus
+            value={this.state.new_todo}
           />
         </form>
       </header>
