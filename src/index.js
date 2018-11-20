@@ -6,7 +6,7 @@ import App from './components/app';
 import './index.css';
 
 const Index = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App /> 
     </BrowserRouter>
 );
