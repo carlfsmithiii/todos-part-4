@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
-import { ALL, ACTIVE, COMPLETED } from './app';
+import { ALL, ACTIVE, COMPLETED } from './App';
 
 export default function Footer(props) {
   return (

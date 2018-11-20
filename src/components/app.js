@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
-import Header from "./header";
-import TodoList from "./todo_list";
-import Footer from "./footer";
+import Header from "./Header";
+import TodoList from "./TodoList";
+import Footer from "./Footer";
 
 import Todos from "../todos.json";
 
