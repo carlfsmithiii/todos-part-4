@@ -5,7 +5,7 @@ export default function NoMatch() {
   return (
     <div>
         <p>URL Not Found</p>
-        < Link to="/"> Home </Link>
+        <Link to="/"> Home </Link>
     </div>
   )
 }
