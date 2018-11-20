@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Footer(props) {
   return (
@@ -8,9 +8,9 @@ export default function Footer(props) {
         <strong>{props.todo_count - props.completed_count}</strong> item(s) left
       </span>
       <ul className="filters">
-        <li><Link to="/">All</Link></li>
-        <li><Link to="/active">Active</Link></li>
-        <li><Link to="/completed">Completed</Link></li>
+        <li><NavLink to="/" >All</NavLink></li>
+        <li><NavLink to="/active" >Active</NavLink></li>
+        <li><NavLink to="/completed" >Completed</NavLink></li>
       </ul>
       {props.completed_count > 0 && <button className="clear-completed" onClick={props.clearCompleted}>Clear completed</button>}
     </footer>
