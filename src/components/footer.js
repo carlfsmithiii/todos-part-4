@@ -10,9 +10,9 @@ export default function Footer(props) {
         <strong>{props.todo_count - props.completed_count}</strong> item(s) left
       </span>
       <ul className="filters">
-        <li><NavLink to="/" activeClassName={props.selected_tab == ALL ? 'selected' : ''}>All</NavLink></li>
-        <li><NavLink to="/active" activeClassName={props.selected_tab == ACTIVE ? 'selected' : ''}>Active</NavLink></li>
-        <li><NavLink to="/completed" activeClassName={props.selected_tab == COMPLETED ? 'selected' : ''}>Completed</NavLink></li>
+        <li><NavLink exact to="/" activeClassName="selected">All</NavLink></li>
+        <li><NavLink exact to="/active" activeClassName="selected">Active</NavLink></li>
+        <li><NavLink exact to="/completed" activeClassName="selected">Completed</NavLink></li>
       </ul>
       {props.completed_count > 0 && <button className="clear-completed" onClick={props.clearCompleted}>Clear completed</button>}
     </footer>
