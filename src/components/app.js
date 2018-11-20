@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
+import NoMatch from './NoMatch';
 
 import Todos from "../todos.json";
 
-export const ALL = 'all'
-export const ACTIVE = 'active'
-export const COMPLETED = 'completed'
+export const ALL = "all";
+export const ACTIVE = "active";
+export const COMPLETED = "completed";
 
 export default class App extends Component {
   state = {
@@ -80,17 +81,17 @@ export default class App extends Component {
     );
   };
 
-  renderTodoListAndFooter = (displayFilter) => {
-
+  renderTodoListAndFooter = displayFilter => {
     let todos = Object.values(this.state.todos);
     if (displayFilter == ACTIVE) {
-      todos = todos.filter(todo => !todo.completed)
+      todos = todos.filter(todo => !todo.completed);
     } else if (displayFilter == COMPLETED) {
-      todos = todos.filter(todo => todo.completed)
+      todos = todos.filter(todo => todo.completed);
     }
 
     return (
       <React.Fragment>
+        <Header addTodo={this.handleAddTodo} />
         <TodoList
           todos={todos}
           handleCompleteTodoClick={this.handleCompleteTodoClick}
@@ -109,10 +110,24 @@ export default class App extends Component {
   render() {
     return (
       <section className="todoapp">
-        <Header addTodo={this.handleAddTodo} />
-        <Route exact path="/" render={() => this.renderTodoListAndFooter(ALL)} /> 
-        <Route exact path="/active" render={() => this.renderTodoListAndFooter(ACTIVE)} />
-        <Route exact path="/completed" render={() => this.renderTodoListAndFooter(COMPLETED)} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => this.renderTodoListAndFooter(ALL)}
+          />
+          <Route
+            exact
+            path="/active"
+            render={() => this.renderTodoListAndFooter(ACTIVE)}
+          />
+          <Route
+            exact
+            path="/completed"
+            render={() => this.renderTodoListAndFooter(COMPLETED)}
+          />
+          <Route component={NoMatch} />
+        </Switch>
       </section>
     );
   }
