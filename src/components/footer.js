@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export default function Footer(props) {
   return (
@@ -6,6 +7,11 @@ export default function Footer(props) {
       <span className="todo-count">
         <strong>{props.todo_count}</strong> item(s) left
       </span>
+      <ul className="filters">
+        <li><Link to="/">All</Link></li>
+        <li><Link to="/active">Active</Link></li>
+        <li><Link to="/completed">Completed</Link></li>
+      </ul>
       {props.completed_count > 0 && <button className="clear-completed" onClick={props.clearCompleted}>Clear completed</button>}
     </footer>
   );
