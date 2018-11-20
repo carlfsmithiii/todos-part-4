@@ -5,7 +5,7 @@ export default function Footer(props) {
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>{props.todo_count}</strong> item(s) left
+        <strong>{props.todo_count - props.completed_count}</strong> item(s) left
       </span>
       <ul className="filters">
         <li><Link to="/">All</Link></li>
