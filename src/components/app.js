@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import { Link, Route, Switch } from "react-router-dom";
 
 import Header from "./header";
 import TodoList from "./todo_list";
 import Footer from "./footer";
 
 import Todos from "../todos.json";
+
+const ALL = 'all'
+const ACTIVE = 'active'
+const COMPLETED = 'completed'
 
 export default class App extends Component {
   state = {
@@ -54,15 +59,17 @@ export default class App extends Component {
 
   handleClearCompletedTodos = () => {
     this.setState(prevState => {
-      const todos = Object.values(prevState.todos).reduce((accumulator, todo) => {
-        if (!todo.completed) {
-          accumulator[todo.id] = todo;
-        }
-        return accumulator;
-      }, {});
+      const todos = Object.values(prevState.todos).reduce(
+        (accumulator, todo) => {
+          if (!todo.completed) {
+            accumulator[todo.id] = todo;
+          }
+          return accumulator;
+        },
+        {}
+      );
 
       return { todos };
-
     });
   };
 
@@ -73,12 +80,19 @@ export default class App extends Component {
     );
   };
 
-  render() {
+  renderTodoListAndFooter = (displayFilter) => {
+
+    let todos = Object.values(this.state.todos);
+    if (displayFilter == ACTIVE) {
+      todos = todos.filter(todo => !todo.completed)
+    } else if (displayFilter == COMPLETED) {
+      todos = todos.filter(todo => todo.completed)
+    }
+
     return (
-      <section className="todoapp">
-        <Header addTodo={this.handleAddTodo} />
+      <React.Fragment>
         <TodoList
-          todos={Object.values(this.state.todos)}
+          todos={todos}
           handleCompleteTodoClick={this.handleCompleteTodoClick}
           handleRemoveTodoClick={this.handleRemoveTodoClick}
         />
@@ -87,6 +101,17 @@ export default class App extends Component {
           completed_count={this.getCompletedTodosCount()}
           clearCompleted={this.handleClearCompletedTodos}
         />
+      </React.Fragment>
+    );
+  };
+
+  render() {
+    return (
+      <section className="todoapp">
+        <Header addTodo={this.handleAddTodo} />
+        <Route exact path="/" render={() => this.renderTodoListAndFooter(ALL)} /> 
+        <Route exact path="/active" render={() => this.renderTodoListAndFooter(ACTIVE)} />
+        <Route exact path="/completed" render={() => this.renderTodoListAndFooter(COMPLETED)} />
       </section>
     );
   }
