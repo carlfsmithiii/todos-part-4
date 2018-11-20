@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Header from "./header";
 import TodoList from "./todo_list";
@@ -7,9 +7,9 @@ import Footer from "./footer";
 
 import Todos from "../todos.json";
 
-const ALL = 'all'
-const ACTIVE = 'active'
-const COMPLETED = 'completed'
+export const ALL = 'all'
+export const ACTIVE = 'active'
+export const COMPLETED = 'completed'
 
 export default class App extends Component {
   state = {
@@ -97,6 +97,7 @@ export default class App extends Component {
           handleRemoveTodoClick={this.handleRemoveTodoClick}
         />
         <Footer
+          selected_tab={displayFilter}
           todo_count={Object.keys(this.state.todos).length}
           completed_count={this.getCompletedTodosCount()}
           clearCompleted={this.handleClearCompletedTodos}
