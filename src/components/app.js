@@ -109,9 +109,9 @@ export default class App extends Component {
     return (
       <section className="todoapp">
         <Header addTodo={this.handleAddTodo} />
+        <Route exact path="/" render={() => this.renderTodoListAndFooter(ALL)} /> 
         <Route exact path="/active" render={() => this.renderTodoListAndFooter(ACTIVE)} />
         <Route exact path="/completed" render={() => this.renderTodoListAndFooter(COMPLETED)} />
-        <Route path="/" render={() => this.renderTodoListAndFooter(ALL)} /> 
       </section>
     );
   }
