@@ -21,10 +21,11 @@ export default class App extends Component {
   };
 
   handleAddTodo = newTodoText => {
-    const newTodoId =
-      Object.values(this.state.todos).reduce((accumulator, todo) =>
+    const newTodoId = this.state.todos.length > 0 
+      ? Object.values(this.state.todos).reduce((accumulator, todo) =>
         accumulator.id > todo.id ? accumulator : todo
-      ).id + 1;
+      ).id + 1
+      : 1;
 
     const newTodo = {
       userId: 1,
