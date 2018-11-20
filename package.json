@@ -16,7 +16,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://carlfsmithiii.github.io/todos-part-2",
+  "homepage": "https://carlfsmithiii.github.io/todos-part-3",
   "eslintConfig": {
     "extends": "react-app"
   },
