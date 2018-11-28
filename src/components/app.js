@@ -5,10 +5,6 @@ import Header from "./Header";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 
-export const ALL = "all";
-export const ACTIVE = "active";
-export const COMPLETED = "completed";
-
 class App extends Component {
   renderTodoListAndFooter = displayFilter => {
     return (
@@ -23,10 +19,10 @@ class App extends Component {
   render() {
     return (
       <section className="todoapp">
-        {this.renderTodoListAndFooter(this.props.filter)} 
+        {this.renderTodoListAndFooter(this.props.filter)}
       </section>
-    )
+    );
   }
 }
 
-export default connect(state => ({filter: state.filter}))(App);
+export default connect(state => ({ filter: state.filter }))(App);

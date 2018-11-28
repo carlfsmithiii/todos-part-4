@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { addTodo } from '../actions/index';
+import { connect } from "react-redux";
+import { addTodo } from "../actions/index";
 
 class Header extends Component {
   state = { new_todo: "" };
@@ -45,7 +45,10 @@ class Header extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addTodo: (text) => dispatch(addTodo(text))
+  addTodo: text => dispatch(addTodo(text))
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Header);

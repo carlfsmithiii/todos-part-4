@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { clearCompletedTodos, setFilter } from "../actions/index";
-import { ACTIVE, ALL, COMPLETED } from '../components/App';
+import { ACTIVE, ALL, COMPLETED } from "../constants/index";
 
-function Footer({ todos, clearCompleted, location, setFilter }) {
+function Footer({ todos, clearCompleted, setFilter }) {
   const todoCount = todos ? Object.values(todos).length : 0;
   const completedTodoCount = todos
     ? Object.values(todos).reduce(
@@ -20,17 +20,32 @@ function Footer({ todos, clearCompleted, location, setFilter }) {
       </span>
       <ul className="filters">
         <li>
-          <NavLink exact to="/" activeClassName="selected" onClick={() => setFilter(ALL)}>
+          <NavLink
+            exact
+            to="/"
+            activeClassName="selected"
+            onClick={() => setFilter(ALL)}
+          >
             All
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/active" activeClassName="selected" onClick={() => setFilter(ACTIVE)}>
+          <NavLink
+            exact
+            to="/active"
+            activeClassName="selected"
+            onClick={() => setFilter(ACTIVE)}
+          >
             Active
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/completed" activeClassName="selected" onClick={() => setFilter(COMPLETED)}>
+          <NavLink
+            exact
+            to="/completed"
+            activeClassName="selected"
+            onClick={() => setFilter(COMPLETED)}
+          >
             Completed
           </NavLink>
         </li>

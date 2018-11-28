@@ -2,19 +2,8 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import { connect } from "react-redux";
 import { removeTodo, completeTodo } from "../actions/index";
-import { ALL } from './App';
 
-import Todos from "../todos.json";
-import { ACTIVE } from "../components/App";
-import { COMPLETED } from "../components/App";
-
-export const initialState = {
-  todos: Todos.reduce((accumulator, todo) => {
-    accumulator[todo.id] = todo;
-    return accumulator;
-  }, {}),
-  filter: ALL
-};
+import { ACTIVE, COMPLETED } from "../constants/index";
 
 function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
   todos = todos ? todos : {};

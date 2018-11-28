@@ -3,13 +3,13 @@ import {
   CLEAR_COMPLETED_TODOS,
   REMOVE_TODO,
   COMPLETE_TODO
-} from "../actions/index";
-import { initialState } from "../components/TodoList";
+} from "../constants/index";
+import { initialState } from "../constants/index";
 
 export default function(state = initialState.todos, action) {
   switch (action.type) {
     case CLEAR_COMPLETED_TODOS:
-      const todos = {...state};
+      const todos = { ...state };
       for (let key of Object.keys(todos)) {
         if (todos[key].completed) {
           delete todos[key];

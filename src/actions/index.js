@@ -1,8 +1,10 @@
-export const COMPLETE_TODO = "COMPLETE_TODO";
-export const REMOVE_TODO = "REMOVE_TODO";
-export const ADD_TODO = "ADD_TODO";
-export const CLEAR_COMPLETED_TODOS = 'CLEAR_COMPLETED_TODOS';
-export const SET_FILTER = 'SET_FILTER';
+import {
+  COMPLETE_TODO,
+  REMOVE_TODO,
+  ADD_TODO,
+  CLEAR_COMPLETED_TODOS,
+  SET_FILTER
+} from "../constants/index";
 
 export function completeTodo(id) {
   return {
@@ -22,9 +24,9 @@ export function addTodo(text) {
   return {
     type: ADD_TODO,
     payload: {
-        userId: 1,
-        title: text,
-        completed: false
+      userId: 1,
+      title: text,
+      completed: false
     }
   };
 }
@@ -32,12 +34,12 @@ export function addTodo(text) {
 export function clearCompletedTodos() {
   return {
     type: CLEAR_COMPLETED_TODOS
-  }
-} 
+  };
+}
 
 export function setFilter(filter) {
   return {
     type: SET_FILTER,
     payload: filter
-  }
+  };
 }
