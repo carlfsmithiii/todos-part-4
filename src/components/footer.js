@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { clearCompletedTodos } from '../actions/index';
+import { NavLink, withRouter } from "react-router-dom";
+import { clearCompletedTodos } from "../actions/index";
 
 function Footer({ todos, clearCompleted }) {
   const todoCount = todos ? Object.values(todos).length : 0;
@@ -53,7 +53,9 @@ const mapDispatchToProps = dispatch => ({
   clearCompleted: () => dispatch(clearCompletedTodos())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Footer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Footer)
+);
