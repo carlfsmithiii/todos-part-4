@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from "redux";
 import { removeTodo, completeTodo } from "../actions/index";
 
 import Todos from "../todos.json";
@@ -23,8 +23,6 @@ function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
   } else if (displayFilter === COMPLETED) {
     todoList = todoList.filter(todo => todo.completed);
   }
-  // console.log('todoing', todoList);
-  // console.log(removeTodo);
 
   return (
     <ul className="todo-list">
@@ -42,8 +40,7 @@ function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log('mapping', state);
+const mapStateToProps = state => {
   return {
     todos: state.todos
   };
@@ -64,9 +61,7 @@ const mapDispatchToProps = dispatch => {
 //   return bindActionCreators({completeTodo, removeTodo}, dispatch);
 // };
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(TodoList);
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

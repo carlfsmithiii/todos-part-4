@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-// import addTodo from '../reducers/reducer_add_todo';
 import { addTodo } from '../actions/index';
 
 class Header extends Component {
