@@ -2,6 +2,7 @@ export const COMPLETE_TODO = "COMPLETE_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
 export const ADD_TODO = "ADD_TODO";
 export const CLEAR_COMPLETED_TODOS = 'CLEAR_COMPLETED_TODOS';
+export const SET_ROUTE = 'SET_ROUTE';
 
 export function completeTodo(id) {
   return {
@@ -33,3 +34,10 @@ export function clearCompletedTodos() {
     type: CLEAR_COMPLETED_TODOS
   }
 } 
+
+export function setRoute(route) {
+  return {
+    type: SET_ROUTE,
+    payload: route
+  }
+}
