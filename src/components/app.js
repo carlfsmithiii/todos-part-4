@@ -16,36 +16,46 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
-        <TodoList displayFilter={displayFilter}/>
-        <Footer />
+        <TodoList displayFilter={displayFilter} />
+        <Footer displayFilter={displayFilter} />
       </React.Fragment>
     );
   };
 
   render() {
+    console.log(this.props.filter);
     return (
       <section className="todoapp">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => this.renderTodoListAndFooter(ALL)}
-          />
-          <Route
-            exact
-            path="/active"
-            render={() => this.renderTodoListAndFooter(ACTIVE)}
-          />
-          <Route
-            exact
-            path="/completed"
-            render={() => this.renderTodoListAndFooter(COMPLETED)}
-          />
-          <Route component={NoMatch} />
-        </Switch>
+        {this.renderTodoListAndFooter(this.props.filter)} 
       </section>
-    );
+    )
   }
+
+  // render() {
+  //   return (
+  //     <section className="todoapp">
+  //       <Switch>
+  //         <Route
+  //           exact
+  //           path="/"
+  //           render={() => this.renderTodoListAndFooter(ALL)}
+  //         />
+  //         <Route
+  //           exact
+  //           path="/active"
+  //           render={() => this.renderTodoListAndFooter(ACTIVE)}
+  //         />
+  //         <Route
+  //           exact
+  //           path="/completed"
+  //           render={() => this.renderTodoListAndFooter(COMPLETED)}
+  //         />
+  //         <Route component={NoMatch} />
+  //       </Switch>
+  //     </section>
+  //   );
+  // }
 }
 
-export default connect()(App);
+export default connect(state => ({filter: state.filter}))(App);
+// export default App;

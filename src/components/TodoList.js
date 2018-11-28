@@ -1,8 +1,9 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+// import { bindActionCreators } from "redux";
 import { removeTodo, completeTodo } from "../actions/index";
+import { ALL } from './App';
 
 import Todos from "../todos.json";
 import { ACTIVE } from "../components/App";
@@ -12,7 +13,8 @@ export const initialState = {
   todos: Todos.reduce((accumulator, todo) => {
     accumulator[todo.id] = todo;
     return accumulator;
-  }, {})
+  }, {}),
+  filter: ALL
 };
 
 function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
@@ -40,9 +42,10 @@ function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    displayFilter: ownProps.displayFilter
   };
 };
 

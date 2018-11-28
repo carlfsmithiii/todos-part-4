@@ -10,12 +10,12 @@ import "./index.css";
 
 const store = createStore(rootReducer);
 
-const Index = () => (
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <Provider store={store}>
+const Index = ({store}) => (
+  <Provider store={store}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
-    </Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
 );
 
-ReactDOM.render(<Index />, document.getElementById("root"));
+ReactDOM.render(<Index store={store}/>, document.getElementById("root"));
