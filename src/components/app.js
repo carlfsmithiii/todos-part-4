@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "./Header";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
-import NoMatch from "./NoMatch";
 
 export const ALL = "all";
 export const ACTIVE = "active";
@@ -23,39 +21,12 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props.filter);
     return (
       <section className="todoapp">
         {this.renderTodoListAndFooter(this.props.filter)} 
       </section>
     )
   }
-
-  // render() {
-  //   return (
-  //     <section className="todoapp">
-  //       <Switch>
-  //         <Route
-  //           exact
-  //           path="/"
-  //           render={() => this.renderTodoListAndFooter(ALL)}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/active"
-  //           render={() => this.renderTodoListAndFooter(ACTIVE)}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/completed"
-  //           render={() => this.renderTodoListAndFooter(COMPLETED)}
-  //         />
-  //         <Route component={NoMatch} />
-  //       </Switch>
-  //     </section>
-  //   );
-  // }
 }
 
 export default connect(state => ({filter: state.filter}))(App);
-// export default App;

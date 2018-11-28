@@ -1,7 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
 import { removeTodo, completeTodo } from "../actions/index";
 import { ALL } from './App';
 
@@ -59,10 +58,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({completeTodo, removeTodo}, dispatch);
-// };
 
 export default connect(
   mapStateToProps,
