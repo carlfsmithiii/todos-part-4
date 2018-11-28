@@ -9,13 +9,13 @@ import { initialState } from "../components/TodoList";
 export default function(state = initialState.todos, action) {
   switch (action.type) {
     case CLEAR_COMPLETED_TODOS:
-      const todos = Object.values(state).reduce((accumulator, todo) => {
-        if (!todo.completed) {
-          accumulator[todo.id] = todo;
+      const todos = {...state};
+      for (let key of Object.keys(todos)) {
+        if (todos[key].completed) {
+          delete todos[key];
         }
-        return accumulator;
-      }, {});
-      return { todos };
+      }
+      return todos;
     case REMOVE_TODO:
       const previousStateTodos = { ...state };
       delete previousStateTodos[action.payload];

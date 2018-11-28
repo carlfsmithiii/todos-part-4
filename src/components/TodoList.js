@@ -43,7 +43,7 @@ function TodoList({ todos, completeTodo, removeTodo, displayFilter }) {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('mapping', state);
+  console.log('mapping', state);
   return {
     todos: state.todos
   };

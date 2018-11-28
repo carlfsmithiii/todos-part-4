@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import clearCompleted from "../reducers/reducer_clear_completed_todos";
+// import clearCompleted from "../reducers/reducer_clear_completed_todos";
+import { clearCompletedTodos } from '../actions/index';
 
 function Footer({ todos, clearCompleted }) {
   const todoCount = todos ? Object.values(todos).length : 0;
@@ -50,7 +51,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  clearCompleted: () => dispatch(clearCompleted())
+  clearCompleted: () => dispatch(clearCompletedTodos())
 });
 
 export default connect(
