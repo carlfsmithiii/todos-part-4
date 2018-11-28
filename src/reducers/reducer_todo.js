@@ -31,7 +31,7 @@ export default function(state = initialState.todos, action) {
       };
     case ADD_TODO:
       const newTodoId =
-        state.length > 0
+        state && Object.values(state).length > 0
           ? Object.values(state).reduce((accumulator, todo) =>
               accumulator.id > todo.id ? accumulator.id : todo.id
             ) + 1
@@ -39,7 +39,7 @@ export default function(state = initialState.todos, action) {
       const newTodoo = { ...action.payload, id: newTodoId };
       return {
         ...state,
-        id: newTodoo
+        [newTodoId]: newTodoo
       };
     default:
       return state;
