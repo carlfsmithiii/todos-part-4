@@ -17,11 +17,7 @@ export function removeTodo(id) {
   };
 }
 
-let lastId = 0;
-
 export function addTodo(text) {
-  const newId = ++lastId;
-
   return {
     type: ADD_TODO,
     payload: {
