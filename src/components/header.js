@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+// import addTodo from '../reducers/reducer_add_todo';
+import { addTodo } from '../actions/index';
 
-export default class Header extends Component {
+class Header extends Component {
   state = { new_todo: "" };
 
   onFormChange = event => {
@@ -16,11 +19,11 @@ export default class Header extends Component {
 
     if (this.state.new_todo.length > 0) {
       this.props.addTodo(this.state.new_todo);
-
-      this.setState(() => {
-        return { new_todo: "" };
-      });
     }
+
+    this.setState(() => {
+      return { new_todo: "" };
+    });
   };
 
   render() {
@@ -41,3 +44,9 @@ export default class Header extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addTodo: (text) => dispatch(addTodo(text))
+});
+
+export default connect(null, mapDispatchToProps)(Header);

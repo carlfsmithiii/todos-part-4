@@ -1,18 +1,59 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import clearCompleted from "../reducers/reducer_clear_completed_todos";
 
-export default function Footer(props) {
+function Footer({ todos, clearCompleted }) {
+  const todoCount = todos ? Object.values(todos).length : 0;
+  const completedTodoCount = todos
+    ? Object.values(todos).reduce(
+        (accumulator, todo) => (todo.completed ? ++accumulator : accumulator),
+        0
+      )
+    : 0;
+
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>{props.todo_count - props.completed_count}</strong> item(s) left
+        <strong>{todoCount - completedTodoCount}</strong> item(s) left
       </span>
       <ul className="filters">
-        <li><NavLink exact to="/" activeClassName="selected">All</NavLink></li>
-        <li><NavLink exact to="/active" activeClassName="selected">Active</NavLink></li>
-        <li><NavLink exact to="/completed" activeClassName="selected">Completed</NavLink></li>
+        <li>
+          <NavLink exact to="/" activeClassName="selected">
+            All
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/active" activeClassName="selected">
+            Active
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/completed" activeClassName="selected">
+            Completed
+          </NavLink>
+        </li>
       </ul>
-      {props.completed_count > 0 && <button className="clear-completed" onClick={props.clearCompleted}>Clear completed</button>}
+      {completedTodoCount > 0 && (
+        <button className="clear-completed" onClick={clearCompleted}>
+          Clear completed
+        </button>
+      )}
     </footer>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  clearCompleted: () => dispatch(clearCompleted())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Footer);
